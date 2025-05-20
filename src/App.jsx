@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './App.module.css';
 import Chat from './components/Chat/Chat';
 const App = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(MESSAGES);
 
   return (
     <div>
