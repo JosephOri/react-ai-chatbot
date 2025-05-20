@@ -1,63 +1,26 @@
 import React, { useState } from 'react';
 import styles from './App.module.css';
 import Chat from './components/Chat/Chat';
+import Controls from './components/Controls/Controls';
 const App = () => {
-  const [messages, setMessages] = useState(MESSAGES);
+  const [messages, setMessages] = useState([]);
+
+  const handleContentSend = (content) => {
+    setMessages((prev) => [...prev, { role: 'user', content }]);
+  };
 
   return (
     <div>
       <header className={styles.Header}>
-        <img src="/chat-bot-512.png" alt="" srcset="" className={styles.Logo} />
-        <h2 className={styles.Title}>Hello World</h2>
+        <img src="/chat-bot-512.png" className={styles.Logo} />
+        <h2 className={styles.Title}>AI Chatbot</h2>
       </header>
       <div className={styles.ChatContainer}>
         <Chat messages={messages} />
       </div>
+      <Controls onSend={handleContentSend} />
     </div>
   );
 };
-
-const MESSAGES = [
-  {
-    role: 'user',
-    content: 'I am good, thank you!',
-  },
-  {
-    role: 'assistant',
-    content: 'Hello, how are you?',
-  },
-  {
-    role: 'user',
-    content: 'I am good, thank you!',
-  },
-  {
-    role: 'assistant',
-    content: 'Hello, how are you?',
-  },
-  {
-    role: 'user',
-    content: 'I am good, thank you!',
-  },
-  {
-    role: 'assistant',
-    content: 'Hello, how are you?',
-  },
-  {
-    role: 'user',
-    content: 'I am good, thank you!',
-  },
-  {
-    role: 'assistant',
-    content: 'Hello, how are you?',
-  },
-  {
-    role: 'user',
-    content: 'I am good, thank you!',
-  },
-  {
-    role: 'assistant',
-    content: 'Hello, how are you?',
-  },
-];
 
 export default App;
