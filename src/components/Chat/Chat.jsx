@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Chat.module.css';
 import Markdown from 'react-markdown';
 const Chat = ({ messages }) => {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className={styles.Chat}>
       {messages.map((message, index) => (
@@ -9,6 +19,7 @@ const Chat = ({ messages }) => {
           <Markdown>{message.content}</Markdown>
         </div>
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
 };
