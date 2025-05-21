@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import styles from './Controls.module.css';
 
-export function Controls({ isDisabled = false, onSend }) {
+export default function Controls({ isDisabled = false, onSend }) {
   const textareaRef = useRef(null);
   const [content, setContent] = useState('');
 
