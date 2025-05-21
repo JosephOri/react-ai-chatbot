@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Controls.module.css';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const Controls = ({ onSend }) => {
   const [content, setContent] = useState('');
@@ -21,12 +22,14 @@ const Controls = ({ onSend }) => {
   return (
     <div className={styles.Controls}>
       <div className={styles.TextAreaContainer}>
-        <textarea
+        <TextareaAutosize
           placeholder="Type your message here..."
           className={styles.TextArea}
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleEnterPress}
+          maxRows={4}
+          minRows={1}
         />
       </div>
       <button className={styles.Button} onClick={handleContentSend}>
