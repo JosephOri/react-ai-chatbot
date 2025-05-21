@@ -2,13 +2,32 @@ import React, { useState } from 'react';
 import styles from './App.module.css';
 import Chat from './components/Chat/Chat';
 import Controls from './components/Controls/Controls';
+import { Assistant } from './assistants/openai';
 const App = () => {
-  const [messages, setMessages] = useState([]);
+  const assistant = new Assistant();
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: 'Hello, how can I help you today?',
+    },
+  ]);
 
-  const handleContentSend = (content) => {
-    setMessages((prev) => [...prev, { role: 'user', content }]);
+  const addMessage = (content, role) => {
+    setMessages((prev) => [...prev, { role, content }]);
   };
 
+  async function handleContentSend(content) {
+    addMessage(content, 'user');
+    try {
+      const result = await assistant.chat(content);
+      addMessage(result, 'assistant');
+    } catch (error) {
+      addMessage({
+        content: 'An error occurred while processing your request. Please try again.',
+      });
+      throw error;
+    }
+  }
   return (
     <div>
       <header className={styles.Header}>
