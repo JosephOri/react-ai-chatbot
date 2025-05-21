@@ -15,7 +15,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const addMessage = (content, role) => {
-    setMessages((prev) => [...prev, { role, content }]);
+    console.log(content, role);
+    setMessages((prev) => [...prev, { role: role, content: content }]);
   };
 
   async function handleContentSend(content) {

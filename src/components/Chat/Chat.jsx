@@ -6,7 +6,7 @@ const Chat = ({ messages }) => {
     <div className={styles.Chat}>
       {messages.map((message, index) => (
         <div key={index} data-role={message.role} className={styles.Message}>
-          {typeof message.content === 'string' ? message.content : JSON.stringify(message.content)}
+          {message.content}
         </div>
       ))}
     </div>
