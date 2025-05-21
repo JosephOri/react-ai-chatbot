@@ -10,7 +10,7 @@
   padding: 8px 16px;
   line-height: 0;
   border-radius: 16px;
-  background: light-dark(#ffffff, #212121);
+  background: #ffffff;
 }
 
 .TextArea {
@@ -19,7 +19,7 @@
   border: none;
   outline: none;
   resize: none;
-  background: light-dark(#ffffff, #212121);
+  background: #ffffff;
 }
 
 .Button {
@@ -31,12 +31,12 @@
   border: none;
   border-radius: 50%;
   outline: none;
-  background: light-dark(#0d0d0d, #ececec);
+  background: #0d0d0d;
   cursor: pointer;
 }
 
 .Button svg {
-  fill: light-dark(#f3f3f3, #171717);
+  fill: #f3f3f3;
 }
 
 .TextArea:disabled,
